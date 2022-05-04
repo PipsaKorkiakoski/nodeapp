@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "DATABASE_URL=postgres://user:password@:/db nodemon index.js"
+    "test": "jest /unit-tests",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cypress": "^9.6.0",
     "express": "^4.18.1",
+    "jest": "^28.0.3",
     "nodemon": "^2.0.16",
     "pg": "^8.7.3",
     "prime-number": "^1.0.2",
