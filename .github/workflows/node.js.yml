@@ -21,8 +21,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Install depencies
+        run: npm install
       - name: Run jest
-        run: npm run test
+        run: run test
   cypress-run:
     name: Cypress run
     runs-on: ubuntu-latest
