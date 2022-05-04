@@ -12,19 +12,6 @@ on:
    # - cron: "*/5 * * * *"
 
 jobs:
-  jest-test:
-    name: Jest run
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install depencies
-        run: npm install
-      - name: Run jest
-        run: test
   cypress-run:
     name: Cypress run
     runs-on: ubuntu-latest
@@ -51,3 +38,6 @@ jobs:
         with:
           name: my-artifact
           path: /home/runner/work/nodeapp/nodeapp/cypress/results/output.html
+      - uses: actions/checkout@v1
+      - name: Run Jest
+          uses: stefanoeb/jest-action@1.0.3
