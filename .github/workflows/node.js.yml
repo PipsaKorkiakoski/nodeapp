@@ -50,4 +50,4 @@ jobs:
           name: my-artifact
           path: /home/runner/work/nodeapp/nodeapp/cypress/results/output.html
       - name: Run Jest
-        run: run test
+        run: test
