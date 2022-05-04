@@ -18,7 +18,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/sumandcheck', (req, res) => {
-    const resp = calculate(parseFloat(req.query.number1), parseFloat(req.query.number2), parseFloat(req.query.number3))
+    let num1 = parseFloat(req.query.number1) || 0;
+    let num2 = parseFloat(req.query.number2) || 0;
+    let num3 = parseFloat(req.query.number3) || 0;
+    const resp = calculate(num1, num2, num3)
     const response = prime(resp.result)
     res.writeHead(200, {"Content-Type": "text/html"});
     res.write('<!DOCTYPE html>'+
