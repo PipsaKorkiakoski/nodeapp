@@ -12,6 +12,15 @@ on:
    # - cron: "*/5 * * * *"
 
 jobs:
+  jest-test:
+    name: Jest run
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - name: Run jest
+        run: npm run test
   cypress-run:
     name: Cypress run
     runs-on: ubuntu-latest
