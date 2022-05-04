@@ -27,3 +27,14 @@ jobs:
         with:
           browser: chrome
           record: false
+      - name: Merge results to json
+        if: always()
+        run: npx mochawesome-merge cypress/results/*.json > cypress/results/output.json
+      - name: Generate html -page
+        if: always()
+        run: npx marge cypress/results/output.json --reportDir cypress/results/ --inline
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: /home/runner/work/cypress-tests/cypress-tests/cypress/results/output.html
