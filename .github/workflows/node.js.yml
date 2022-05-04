@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run Jest
+        run: npm run test
+
       - name: Cypress run
         continue-on-error: false
         uses: cypress-io/github-action@v2
@@ -49,5 +52,4 @@ jobs:
         with:
           name: my-artifact
           path: /home/runner/work/nodeapp/nodeapp/cypress/results/output.html
-      - name: Run Jest
-        run: test
+
