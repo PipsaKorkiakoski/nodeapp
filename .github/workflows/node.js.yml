@@ -39,4 +39,4 @@ jobs:
           name: my-artifact
           path: /home/runner/work/nodeapp/nodeapp/cypress/results/output.html
       - name: Run Jest
-        uses: stefanoeb/jest-action@1.0.3
+        run: run test
