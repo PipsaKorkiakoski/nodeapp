@@ -37,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: /home/runner/work/cypress-tests/cypress-tests/cypress/results/output.html
+          path: /home/runner/work/nodeapp/nodeapp/cypress/results/output.html
