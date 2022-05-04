@@ -1,26 +1,59 @@
 const express = require('express');
-
-
 const app = express();
 app.use(express.json());
 
-const data = [];
+const { calculate } = require('./calculate')
+const { prime } = require('./prime')
+
+
+const {readFileSync} = require('fs')
+const formPage = readFileSync('./form.html')
+
+app.use(express.static('./public'))
+
 app.get('/', (req, res) => {
-    res.status(200).send('Welcome');
+    res.writeHead(200,{ 'content-type':'text/html' })
+    res.write(formPage)
+    res.end()
+})
+
+app.get('/sumandcheck', (req, res) => {
+    const resp = calculate(parseFloat(req.query.number1), parseFloat(req.query.number2), parseFloat(req.query.number3))
+    const response = prime(resp.result)
+    res.writeHead(200, {"Content-Type": "text/html"});
+    res.write('<!DOCTYPE html>'+
+    '<html>'+
+    '    <head>'+
+    '        <meta charset="utf-8" />'+
+    '        <title>Node.js tests</title>'+
+    '    </head>'+ 
+    '    <body>'+
+    '       <p id = "name">'+
+          'Sum is ' + resp.result + " and it is prime: " + response.isPrime +
+          '</p>'+
+    '    </body>'+            
+        '</html>');
+    console.log(response)
+    res.end()
     return;
 })
-app.get('/hello', (req, res) => {
-    res.status(200).send('hello');
-    return;
-})
-app.get('/data', async (req, res) => {
-    res.status(200).send(data);
-    return;
-})
-app.post('/data', (req, res) => {
-    let dataBody = req.body;
-    data.push(dataBody)
-    res.status(201).send(data);
+app.get('/checkprime', (req, res) => {
+    const response = prime(req.query.number)
+    res.writeHead(200, {"Content-Type": "text/html"});
+    res.write('<!DOCTYPE html>'+
+    '<html>'+
+    '    <head>'+
+    '        <meta charset="utf-8" />'+
+    '        <title>Node.js tests</title>'+
+    '    </head>'+ 
+    '    <body>'+
+    '       <p id = "name">'+
+          'Number ' + req.query.number + " isPrime: " + response.isPrime +
+          '</p>'+
+    '    </body>'+            
+        '</html>');
+    console.log(response)
+    res.end()
     return;
 })
 app.listen({ port: 8080 }, () => {
