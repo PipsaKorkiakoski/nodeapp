@@ -1,3 +1,11 @@
 {
-    "baseUrl": "https://my-app-s3ymm.ondigitalocean.app/"
+    "baseUrl": "https://my-app-s3ymm.ondigitalocean.app/",
+    "reporter": "mochawesome",
+    "reporterOptions": {
+        "charts": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/results"
+        }
 }
