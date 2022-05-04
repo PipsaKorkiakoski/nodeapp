@@ -24,7 +24,7 @@ jobs:
       - name: Install depencies
         run: npm install
       - name: Run jest
-        run: run test
+        run: test
   cypress-run:
     name: Cypress run
     runs-on: ubuntu-latest
