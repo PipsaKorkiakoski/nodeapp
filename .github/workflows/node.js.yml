@@ -35,21 +35,21 @@ jobs:
       - name: Run Jest
         run: npm run test
 
-      - name: Cypress run
-        continue-on-error: false
-        uses: cypress-io/github-action@v2
-        with:
-          browser: chrome
-          record: false
-      - name: Merge results to json
-        if: always()
-        run: npx mochawesome-merge cypress/results/*.json > cypress/results/output.json
-      - name: Generate html -page
-        if: always()
-        run: npx marge cypress/results/output.json --reportDir cypress/results/ --inline
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: /home/runner/work/nodeapp/nodeapp/cypress/results/output.html
+      # - name: Cypress run
+       # continue-on-error: false
+        # uses: cypress-io/github-action@v2
+        # with:
+          # browser: chrome
+          # record: false
+      # - name: Merge results to json
+       # if: always()
+        # run: npx mochawesome-merge cypress/results/*.json > cypress/results/output.json
+      # - name: Generate html -page
+       # if: always()
+       # run: npx marge cypress/results/output.json --reportDir cypress/results/ --inline
+      # - name: 'Upload Artifact'
+       # uses: actions/upload-artifact@v3
+       # with:
+       #   name: my-artifact
+        #  path: /home/runner/work/nodeapp/nodeapp/cypress/results/output.html
 
